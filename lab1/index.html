@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Портфолио — Визитка</title>
+    <meta name="description" content="Одностраничная визитка: обо мне, навыки, портфолио и контакты.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="logo" href="#top" aria-label="На главную">Nikita.dev</a>
+
+        <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+          <ul class="nav-list">
+            <li><a href="#about">О себе</a></li>
+            <li><a href="#skills">Навыки</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
+          <div class="hero-text">
+            <h1 id="hero-title">Привет! Я Никита — студент 3 курса КемГУ</h1>
+            <p>Пишу код, иногда. Ниже — кратко обо мне, стек и примеры работ.</p>
+            <p>
+              <a class="btn btn-primary" href="#portfolio">Смотреть проекты</a>
+              <a class="btn" href="#contacts">Связаться</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title" class="section-title">О себе</h2>
+          <div class="about-grid">
+            <p>
+              Я учу программирование уже 5 семестров и походу ниче не умею&#40 
+            </p>
+            <ul class="checklist">
+              <li>Опыт учебных проектов в разных областях</li>
+              <li>Умеб немного программировать</li>
+              <li>Проводником работал</li>
+              <li>Базы данных умею делат</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section section--alt" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title" class="section-title">Навыки</h2>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>HTML</h3>
+              <div class="meter" aria-label="Уровень HTML" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                <span style="width:50%"></span>
+              </div>
+              <p>Чут вроде умею</p>
+            </article>
+            <article class="skill-card">
+              <h3>CSS</h3>
+              <div class="meter" aria-label="Уровень CSS" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span style="width:50%"></span>
+              </div>
+              <p>Flexbox, Grid, адаптивность, переменные вроде знаю</p>
+            </article>
+            <article class="skill-card">
+              <h3>JavaScript</h3>
+              <div class="meter" aria-label="Уровень JavaScript" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span style="width:70%"></span>
+              </div>
+              <p>Это получше знаю конечно</p>
+            </article>
+            <article class="skill-card">
+              <h3>Git</h3>
+              <div class="meter" aria-label="Уровень Git" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65">
+                <span style="width:80%"></span>
+              </div>
+              <p>С гитхабом работаю, мне хватает</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+        <div class="container">
+          <h2 id="portfolio-title" class="section-title">Портфолио</h2>
+          <div class="portfolio-grid">
+            <article class="card">
+              <a class="card__link" href="#" aria-label="Проект 1">
+                <img class="card__img" src="https://iy.kommersant.ru/Issues.photo/LifeStyle_Online/2019/03/29/KMO_111307_24478_1_t218_122831.jpg" alt="Скриншот проекта 1">
+              </a>
+              <div class="card__body">
+                <h3 class="card__title">Решение матрицы на C++</h3>
+                <p class="card__desc">По КОПу делал лабу</p>
+              </div>
+            </article>
+            <article class="card">
+              <a class="card__link" href="#" aria-label="Проект 2">
+                <img class="card__img" src="https://www.developer-tech.com/wp-content/uploads/2021/02/mongodb-atlas-google-cloud-partnership-nosql-databases-integrations-2.jpg" alt="Скриншот проекта 2">
+              </a>
+              <div class="card__body">
+                <h3 class="card__title">Курсовая по БД</h3>
+                <p class="card__desc">На mongodb приколюхи написал</p>
+              </div>
+            </article>
+            <article class="card">
+              <a class="card__link" href="#" aria-label="Проект 3">
+                <img class="card__img" src="https://skillbox.ru/upload/setka_images/08434114042023_08fda0244b5397e030ee401fd2bea5b24f78a72b.jpg" alt="Скриншот проекта 3">
+              </a>
+              <div class="card__body">
+                <h3 class="card__title">Сервак сделал на операционных системах</h3>
+                <p class="card__desc">Прикольно было, даже работало</p>
+              </div>
+            </article>
+            <article class="card">
+              <a class="card__link" href="#" aria-label="Проект 4">
+                <img class="card__img" src="https://gb.ru/blog/wp-content/uploads/2022/11/1-17.jpg.webp" alt="Скриншот проекта 4">
+              </a>
+              <div class="card__body">
+                <h3 class="card__title">И много другого</h3>
+                <p class="card__desc">Такие дела</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="section section--alt" aria-labelledby="contacts-title">
+        <div class="container">
+          <h2 id="contacts-title" class="section-title">Контакты</h2>
+          <div class="contacts-grid">
+            <div>
+              <ul class="contacts-list">
+                <li><span class="contacts-label">Email:</span> <a href="mailto:pupupu@yandex.com">pupupu@yandex.com</a></li>
+                <li><span class="contacts-label">Телефон:</span> <a href="tel:88005553535">8-800-555-35-35</a></li>
+                <li><span class="contacts-label">Telegram:</span> <a href="https://t.me/tgshka" target="_blank" rel="noopener">@tgshka</a></li>
+                <li><span class="contacts-label">GitHub:</span> <a href="https://github.com/githabchik" target="_blank" rel="noopener">github.com/githabchik</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <small>© <span id="year"></span> Nikita.dev. Все права защищены.</small>
+        <ul class="footer-links">
+          <li><a href="#top">Наверх</a></li>
+          <li><a href="#about">О себе</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      // Мобильное меню
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav?.classList.toggle('is-open');
+      });
+
+      // Текущий год в футере
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+  </html>
+
+

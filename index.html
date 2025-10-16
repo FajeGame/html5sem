@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Сайт-визитка</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Мое Портфолио</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link">Главная</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Обо мне</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Навыки</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Привет, я <span class="highlight">Веб-разработчик</span></h1>
+            <p>создаю современные и интерактивные веб-приложения</p>
+            <button class="cta-button" id="contact-btn">Связаться со мной</button>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>я студент Вуза, занимаюсь программированием и дизайном.</p>
+                    <p>моя цель - научится программировать и создавать сайты, а также стать хорошим разработчиком.</p>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навыки -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Навыки</h2>
+            <div class="skills-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="skill-item active">
+                            <i class="fab fa-python"></i>
+                            <h3>Python</h3>
+                            <p>Программирование</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <h3>HTML</h3>
+                            <p>Веб-разработка</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <h3>Oracle</h3>
+                            <p>Базы данных</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-android"></i>
+                            <h3>Kotlin</h3>
+                            <p>Мобильная разработка</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <h3>Git</h3>
+                            <p>Репозиторий</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                        <span class="dot" data-slide="5"></span>
+                    </div>
+                    <button class="carousel-btn next-btn" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="web">Веб-разработка</button>
+                <button class="filter-btn" data-filter="db">Базы данных</button>
+                <button class="filter-btn" data-filter="game">Игры</button>
+                <button class="filter-btn" data-filter="work">Опыт работы</button>
+                <button class="filter-btn" data-filter="app">Приложения</button>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Портфолио будет загружено динамически из JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tutamoyapochta@mail.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (800) 555-35-35</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>github.com/FajeGame</span>
+                    </div>
+                </div>
+                <button class="contact-form-btn" id="open-form-btn">Написать сообщение</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для формы обратной связи -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Обратная связь</h3>
+                <span class="close" id="close-modal">&times;</span>
+            </div>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Имя *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Тема</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <span class="error-message" id="message-error"></span>
+                </div>
+                <button type="submit" class="submit-btn">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Кнопка "Вверх" -->
+    <button class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Подключение jQuery и скриптов -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

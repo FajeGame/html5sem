@@ -1,0 +1,383 @@
+// Общие стили для секций
+.section {
+  padding: 100px 0;
+  
+  // Заголовок секции
+  &__title {
+    text-align: center;
+    font-size: $font-size-h2;
+    font-weight: 700;
+    margin-bottom: $spacing-xl;
+    color: $color-text;
+  }
+  
+  // Контейнер секции
+  &__container {
+    @include container;
+  }
+}
+
+// Hero секция
+.hero {
+  height: 100vh;
+  @include flex-center;
+  text-align: center;
+  color: white;
+  position: relative;
+  background: $gradient-hero;
+  
+  // Контент hero
+  &__content {
+    max-width: 800px;
+    padding: 0 $spacing-lg;
+  }
+  
+  // Заголовок hero
+  &__title {
+    font-size: $font-size-h1;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+    animation: fadeInUp 1s ease;
+  }
+  
+  // Подзаголовок hero
+  &__subtitle {
+    font-size: 1.3rem;
+    margin-bottom: $spacing-xl;
+    animation: fadeInUp 1s ease 0.2s both;
+  }
+  
+  // Выделенный текст
+  &__highlight {
+    color: $color-warning;
+  }
+  
+  // Кнопка CTA
+  &__cta {
+    @extend .btn;
+    @extend .btn--accent;
+    animation: fadeInUp 1s ease 0.4s both;
+  }
+}
+
+// Секция "Обо мне"
+.about {
+  background: $color-bg;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  
+  // Контент about
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+  }
+  
+  // Текст about
+  &__text {
+    p {
+      font-size: 1.1rem;
+      margin-bottom: $spacing-md;
+      color: $color-text;
+      line-height: 1.8;
+    }
+  }
+  
+  // Изображение about
+  &__image {
+    @include flex-center;
+  }
+  
+  // Placeholder изображения
+  &__placeholder {
+    width: 300px;
+    height: 300px;
+    background: $gradient-accent;
+    border-radius: 50%;
+    @include flex-center;
+    
+    i {
+      font-size: 4rem;
+      color: white;
+    }
+  }
+}
+
+// Секция навыков
+.skills {
+  background: $color-bg;
+  
+  // Карусель навыков
+  &__carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  // Контейнер карусели
+  &__container {
+    overflow: hidden;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+  }
+  
+  // Обёртка карусели
+  &__wrapper {
+    display: flex;
+    @include transition(transform 0.5s);
+  }
+  
+  // Элемент навыка
+  &__item {
+    min-width: 100%;
+    padding: $spacing-xl;
+    text-align: center;
+    background: $gradient-hero;
+    color: white;
+    opacity: 0.7;
+    @include transition(opacity);
+    
+    &--active {
+      opacity: 1;
+    }
+    
+    // Иконка навыка
+    i {
+      font-size: 4rem;
+      margin-bottom: $spacing-md;
+      display: block;
+    }
+    
+    // Заголовок навыка
+    h3 {
+      font-size: $font-size-h3;
+      margin-bottom: $spacing-md;
+    }
+    
+    // Описание навыка
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+  }
+  
+  // Управление каруселью
+  &__controls {
+    @include flex-center;
+    justify-content: space-between;
+    margin-top: $spacing-lg;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+  
+  // Кнопка карусели
+  &__btn {
+    @extend .btn;
+    @extend .btn--primary;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+  }
+  
+  // Точки навигации
+  &__dots {
+    display: flex;
+    gap: $spacing-sm;
+  }
+  
+  // Точка
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $color-border-dark;
+    cursor: pointer;
+    @include transition();
+    
+    &--active {
+      background: $color-primary;
+      transform: scale(1.2);
+    }
+  }
+}
+
+// Секция портфолио
+.portfolio {
+  background: $color-bg-light;
+  
+  // Фильтры портфолио
+  &__filters {
+    @include flex-center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+  }
+  
+  // Кнопка фильтра
+  &__filter {
+    @extend .btn;
+    @extend .btn--outline;
+    border-radius: 25px;
+    
+    &--active {
+      @extend .btn--primary;
+    }
+  }
+  
+  // Сетка портфолио
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+  }
+  
+  // Элемент портфолио
+  &__item {
+    background: $color-bg;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    @include transition();
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Изображение портфолио
+    &-image {
+      height: 200px;
+      background: $gradient-accent;
+      @include flex-center;
+      color: white;
+      font-size: 3rem;
+    }
+    
+    // Контент портфолио
+    &-content {
+      padding: $spacing-md;
+    }
+    
+    // Заголовок элемента
+    &-title {
+      font-size: 1.3rem;
+      margin-bottom: $spacing-xs;
+      color: $color-text;
+    }
+    
+    // Описание элемента
+    &-description {
+      color: $color-text-light;
+      margin-bottom: $spacing-sm;
+    }
+    
+    // Теги элемента
+    &-tags {
+      display: flex;
+      gap: $spacing-xs;
+      flex-wrap: wrap;
+    }
+    
+    // Тег
+    &-tag {
+      background: $color-border;
+      color: $color-text;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// Секция контактов
+.contact {
+  background: $color-bg-dark;
+  color: white;
+  
+  .section__title {
+    color: white;
+  }
+  
+  // Контент контактов
+  &__content {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+  }
+  
+  // Информация о контактах
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  // Элемент контакта
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: 1.1rem;
+    
+    i {
+      font-size: 1.5rem;
+      color: $color-primary;
+      width: 30px;
+    }
+  }
+  
+  // Кнопка формы
+  &__form-btn {
+    @extend .btn;
+    @extend .btn--accent;
+  }
+}
+
+// Анимации
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Адаптивность
+@include respond-to(md) {
+  .about__content {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+  
+  .contact__content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills__controls {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+@include respond-to(sm) {
+  .hero__title {
+    font-size: 2rem;
+  }
+  
+  .section__title {
+    font-size: 2rem;
+  }
+}

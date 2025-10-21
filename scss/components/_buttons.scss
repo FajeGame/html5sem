@@ -1,0 +1,166 @@
+// Базовый класс кнопки
+.btn {
+  @include button-base;
+  
+  // Модификаторы размеров
+  &--sm {
+    padding: 8px 16px;
+    font-size: $font-size-sm;
+  }
+  
+  &--lg {
+    padding: 16px 32px;
+    font-size: $font-size-lg;
+  }
+  
+  // Модификаторы цветов
+  &--primary {
+    @include button-primary;
+  }
+  
+  &--accent {
+    @include button-accent;
+  }
+  
+  &--outline {
+    @include button-outline;
+  }
+  
+  &--success {
+    @include button-base;
+    background: $color-success;
+    color: white;
+    
+    &:hover {
+      background: darken($color-success, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &--danger {
+    @include button-base;
+    background: $color-danger;
+    color: white;
+    
+    &:hover {
+      background: darken($color-danger, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  // Модификаторы состояния
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &--loading {
+    position: relative;
+    color: transparent;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+  
+  // Модификаторы ширины
+  &--full {
+    width: 100%;
+  }
+  
+  &--block {
+    display: block;
+    width: 100%;
+  }
+  
+  // Модификаторы формы
+  &--round {
+    border-radius: $border-radius-pill;
+  }
+  
+  &--square {
+    border-radius: $border-radius-md;
+  }
+  
+  // Модификаторы иконок
+  &--icon {
+    padding: 12px;
+    width: auto;
+    height: auto;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  // Состояния при наведении
+  &:hover:not(&--disabled) {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active:not(&--disabled) {
+    transform: translateY(0);
+  }
+  
+  // Фокус для доступности
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Анимация загрузки
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+// Группа кнопок
+.btn-group {
+  display: flex;
+  gap: $spacing-sm;
+  
+  &--vertical {
+    flex-direction: column;
+  }
+  
+  &--center {
+    justify-content: center;
+  }
+  
+  &--end {
+    justify-content: flex-end;
+  }
+  
+  &--space-between {
+    justify-content: space-between;
+  }
+}
+
+// Адаптивность
+@include respond-to(sm) {
+  .btn {
+    &--lg {
+      padding: 12px 24px;
+      font-size: $font-size-base;
+    }
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    
+    &--vertical {
+      flex-direction: column;
+    }
+  }
+}

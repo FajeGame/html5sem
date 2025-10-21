@@ -1,0 +1,133 @@
+// Базовые стили типографики
+body {
+  font-family: $font-stack;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $color-text;
+  background: $color-bg;
+}
+
+// Заголовки
+h1 {
+  font-size: $font-size-h1;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: $color-text;
+}
+
+h2 {
+  font-size: $font-size-h2;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: $spacing-md;
+  color: $color-text;
+}
+
+h3 {
+  font-size: $font-size-h3;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: $spacing-sm;
+  color: $color-text;
+}
+
+h4 {
+  font-size: $font-size-h4;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: $spacing-sm;
+  color: $color-text;
+}
+
+// Параграфы
+p {
+  margin-bottom: $spacing-sm;
+  color: $color-text;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Ссылки
+a {
+  color: $color-primary;
+  @include transition(color);
+  
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// Списки
+ul, ol {
+  margin-bottom: $spacing-sm;
+  padding-left: $spacing-lg;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Код
+code {
+  font-family: 'Courier New', monospace;
+  background: $color-bg-light;
+  padding: 2px 4px;
+  border-radius: $border-radius-sm;
+  font-size: 0.9em;
+}
+
+// Цитаты
+blockquote {
+  margin: $spacing-lg 0;
+  padding-left: $spacing-lg;
+  border-left: 4px solid $color-primary;
+  font-style: italic;
+  color: $color-text-light;
+}
+
+// Малый текст
+small {
+  font-size: $font-size-sm;
+  color: $color-text-light;
+}
+
+// Выделенный текст
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+// Адаптивность заголовков
+@include respond-to(md) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@include respond-to(sm) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+}

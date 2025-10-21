@@ -1,0 +1,51 @@
+// Сброс стилей
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Убираем подчёркивание у ссылок
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Убираем стили у списков
+ul, ol {
+  list-style: none;
+}
+
+// Убираем стили у кнопок
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+// Убираем стили у полей ввода
+input, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+// Убираем стили у изображений
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Убираем стили у таблиц
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Убираем стили у заголовков
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}

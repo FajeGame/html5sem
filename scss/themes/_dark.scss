@@ -1,0 +1,145 @@
+// Тёмная тема
+[data-theme="dark"] {
+  // Основные цвета (адаптированные для тёмной темы)
+  --color-primary: #7ab8ff;
+  --color-primary-dark: #4a9bff;
+  --color-accent: #ff8f7a;
+  --color-accent-dark: #ff6c52;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  
+  // Цвета текста
+  --color-text: #e6e6e6;
+  --color-text-light: #a3a3a3;
+  --color-text-muted: #737373;
+  
+  // Цвета фона
+  --color-bg: #0f141a;
+  --color-bg-light: #141b22;
+  --color-bg-dark: #1a1a1a;
+  
+  // Цвета границ
+  --color-border: #243241;
+  --color-border-dark: #374151;
+  
+  // Тени (адаптированные для тёмной темы)
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+// Применение тёмной темы
+[data-theme="dark"] body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+// Специфичные стили для тёмной темы
+[data-theme="dark"] .navbar {
+  background: rgba(15, 20, 26, 0.95);
+  
+  &--scrolled {
+    background: rgba(15, 20, 26, 0.98);
+  }
+  
+  &__logo h2 {
+    color: var(--color-text);
+  }
+  
+  &__link {
+    color: var(--color-text);
+    
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+}
+
+[data-theme="dark"] .about {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  
+  &__text p {
+    color: var(--color-text);
+  }
+}
+
+[data-theme="dark"] .skills {
+  background: var(--color-bg);
+}
+
+[data-theme="dark"] .portfolio {
+  background: var(--color-bg-light);
+  
+  &__item {
+    background: var(--color-bg);
+    box-shadow: var(--shadow-md);
+    
+    &-title {
+      color: var(--color-text);
+    }
+    
+    &-description {
+      color: var(--color-text-light);
+    }
+    
+    &-tag {
+      background: var(--color-border);
+      color: var(--color-text);
+    }
+  }
+}
+
+[data-theme="dark"] .contact {
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  
+  .section__title {
+    color: var(--color-text);
+  }
+}
+
+// Адаптация кнопок для тёмной темы
+[data-theme="dark"] .btn {
+  &--outline {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+  }
+}
+
+// Адаптация форм для тёмной темы
+[data-theme="dark"] .form-group {
+  input, textarea {
+    background: var(--color-bg-light);
+    border-color: var(--color-border);
+    color: var(--color-text);
+    
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+  
+  label {
+    color: var(--color-text);
+  }
+}
+
+// Адаптация модальных окон для тёмной темы
+[data-theme="dark"] .modal-content {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .modal-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+}

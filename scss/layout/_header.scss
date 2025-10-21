@@ -1,0 +1,188 @@
+// Навигационная панель
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-fixed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: $shadow-sm;
+  @include transition();
+  
+  // Состояние при скролле
+  &--scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: $shadow-md;
+  }
+  
+  // Контейнер навбара
+  &__container {
+    @include container;
+    @include flex-between;
+    height: 70px;
+  }
+  
+  // Логотип
+  &__logo {
+    h2 {
+      color: $color-text;
+      font-size: 1.8rem;
+      font-weight: 700;
+      @include transition(color);
+    }
+  }
+  
+  // Меню навигации
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+  
+  // Список навигации
+  &__list {
+    @include reset-list;
+    display: flex;
+    gap: $spacing-lg;
+  }
+  
+  // Элемент навигации
+  &__item {
+    // Пустой для будущих модификаторов
+  }
+  
+  // Ссылка навигации
+  &__link {
+    color: $color-text;
+    font-weight: 500;
+    position: relative;
+    @include transition(color);
+    
+    &:hover {
+      color: $color-primary;
+    }
+    
+    // Подчёркивание при наведении
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $color-primary;
+      @include transition(width);
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+    
+    // Активное состояние
+    &--active {
+      color: $color-primary;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+  
+  // Переключатель мобильного меню
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+    
+    // Полоски гамбургера
+    &-bar {
+      width: 25px;
+      height: 3px;
+      background: $color-text;
+      @include transition();
+    }
+    
+    // Анимация при открытии
+    &--active {
+      .navbar__toggle-bar {
+        &:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        
+        &:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+    }
+  }
+  
+  // Переключатель темы
+  &__theme-toggle {
+    margin-left: $spacing-sm;
+    
+    .btn {
+      @extend .btn--outline;
+      padding: 8px 16px;
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+// Мобильная навигация
+@include respond-to(md) {
+  .navbar {
+    &__menu {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 70px);
+      background: $color-bg;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: $spacing-xl 0;
+      @include transition(left);
+      box-shadow: $shadow-md;
+    }
+    
+    &__menu--active {
+      left: 0;
+    }
+    
+    &__list {
+      flex-direction: column;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+    
+    &__toggle {
+      display: flex;
+    }
+    
+    &__theme-toggle {
+      margin-left: 0;
+      margin-top: $spacing-lg;
+    }
+  }
+}
+
+// Дополнительные стили для мобильных устройств
+@include respond-to(sm) {
+  .navbar {
+    &__container {
+      padding: 0 15px;
+    }
+    
+    &__logo h2 {
+      font-size: 1.5rem;
+    }
+  }
+}

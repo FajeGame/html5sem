@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "sass:dev": "sass --watch <source dir>:<out dir>",
+    "sass:prod": "sass --no-source-map --style compressed <source dir>:<out dir>"
+  }
+}
+

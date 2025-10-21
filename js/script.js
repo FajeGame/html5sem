@@ -1,23 +1,41 @@
 $(document).ready(function() {
     // переменные для карусели
     var currentSlide = 0;
-    var totalSlides = $('.skill-item').length;
+    var totalSlides = $('.skills__item').length;
     var carouselInterval;
+
+    // Инициализация темы из localStorage
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Переключение темы
+    $('#theme-toggle').click(function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 
     // выпадающее меню для мобильных
     $('#nav-toggle').click(function() {
-        $(this).toggleClass('active');
-        $('#nav-menu .nav-list').toggleClass('active');
+        $(this).toggleClass('navbar__toggle--active');
+        $('#nav-menu').toggleClass('navbar__menu--active');
     });
 
     // закрытие меню при клике на ссылку
-    $('.nav-link').click(function() {
-        $('#nav-toggle').removeClass('active');
-        $('#nav-menu .nav-list').removeClass('active');
+    $('.navbar__link').click(function() {
+        $('#nav-toggle').removeClass('navbar__toggle--active');
+        $('#nav-menu').removeClass('navbar__menu--active');
     });
 
     // плавная прокрутка к секциям
-    $('.nav-link, .cta-button').click(function(e) {
+    $('.navbar__link, .hero__cta').click(function(e) {
         e.preventDefault();
         var target = $(this.getAttribute('href'));
         if (target.length) {
@@ -31,15 +49,15 @@ $(document).ready(function() {
     $(window).scroll(function() {
         var scrollPos = $(window).scrollTop() + 100;
         
-        $('.nav-link').each(function() {
+        $('.navbar__link').each(function() {
             var currLink = $(this);
             var refElement = $(currLink.attr('href'));
             
             if (refElement.length && 
                 refElement.position().top <= scrollPos && 
                 refElement.position().top + refElement.height() > scrollPos) {
-                $('.nav-link').removeClass('active');
-                currLink.addClass('active');
+                $('.navbar__link').removeClass('navbar__link--active');
+                currLink.addClass('navbar__link--active');
             }
         });
     });
@@ -47,9 +65,9 @@ $(document).ready(function() {
     // кнопка "вверх"
     $(window).scroll(function() {
         if ($(this).scrollTop() > 300) {
-            $('#scroll-top').addClass('visible');
+            $('#scroll-top').addClass('scroll-top--visible');
         } else {
-            $('#scroll-top').removeClass('visible');
+            $('#scroll-top').removeClass('scroll-top--visible');
         }
     });
 
@@ -61,13 +79,13 @@ $(document).ready(function() {
 
     // модальное окно
     $('#contact-btn, #open-form-btn').click(function() {
-        $('#contact-modal').fadeIn(300);
+        $('#contact-modal').addClass('modal--active');
         $('body').css('overflow', 'hidden');
     });
 
     $('#close-modal, #contact-modal').click(function(e) {
         if (e.target === this) {
-            $('#contact-modal').fadeOut(300);
+            $('#contact-modal').removeClass('modal--active');
             $('body').css('overflow', 'auto');
         }
     });
@@ -75,7 +93,7 @@ $(document).ready(function() {
     // закрытие модального окна по escape
     $(document).keydown(function(e) {
         if (e.key === 'Escape') {
-            $('#contact-modal').fadeOut(300);
+            $('#contact-modal').removeClass('modal--active');
             $('body').css('overflow', 'auto');
         }
     });
@@ -149,7 +167,7 @@ $(document).ready(function() {
                 // успешная отправка
                 alert('сообщение успешно отправлено!');
                 $('#contact-form')[0].reset();
-                $('#contact-modal').fadeOut(300);
+                $('#contact-modal').removeClass('modal--active');
                 $('body').css('overflow', 'auto');
             })
             .fail(function(xhr, status, error) {
@@ -169,14 +187,14 @@ $(document).ready(function() {
 
     // карусель навыков
     function showSlide(index) {
-        $('.skill-item').removeClass('active');
-        $('.skill-item').eq(index).addClass('active');
-        $('.dot').removeClass('active');
-        $('.dot').eq(index).addClass('active');
+        $('.skills__item').removeClass('skills__item--active');
+        $('.skills__item').eq(index).addClass('skills__item--active');
+        $('.skills__dot').removeClass('skills__dot--active');
+        $('.skills__dot').eq(index).addClass('skills__dot--active');
         
         // сдвигаем карусель
         var translateX = -index * 100;
-        $('.carousel-wrapper').css('transform', 'translateX(' + translateX + '%)');
+        $('.skills__wrapper').css('transform', 'translateX(' + translateX + '%)');
     }
 
     function nextSlide() {
@@ -201,7 +219,7 @@ $(document).ready(function() {
     });
 
     // точки навигации
-    $('.dot').click(function() {
+    $('.skills__dot').click(function() {
         currentSlide = $(this).data('slide');
         showSlide(currentSlide);
         resetCarouselInterval();
@@ -246,16 +264,16 @@ $(document).ready(function() {
         portfolioGrid.empty();
 
         projects.forEach(function(project, index) {
-            var portfolioItem = $('<div class="portfolio-item" data-category="' + project.category + '">' +
-                '<div class="portfolio-image">' +
+            var portfolioItem = $('<div class="portfolio__item" data-category="' + project.category + '">' +
+                '<div class="portfolio__item-image">' +
                     '<i class="' + project.image + '"></i>' +
                 '</div>' +
-                '<div class="portfolio-content">' +
-                    '<h3>' + project.title + '</h3>' +
-                    '<p>' + project.description + '</p>' +
-                    '<div class="portfolio-tags">' +
+                '<div class="portfolio__item-content">' +
+                    '<h3 class="portfolio__item-title">' + project.title + '</h3>' +
+                    '<p class="portfolio__item-description">' + project.description + '</p>' +
+                    '<div class="portfolio__item-tags">' +
                         project.tags.map(function(tag) {
-                            return '<span class="tag">' + tag + '</span>';
+                            return '<span class="portfolio__item-tag">' + tag + '</span>';
                         }).join('') +
                     '</div>' +
                 '</div>' +
@@ -266,7 +284,7 @@ $(document).ready(function() {
     }
 
     function animatePortfolioItems() {
-        $('.portfolio-item').each(function(index) {
+        $('.portfolio__item').each(function(index) {
             var item = $(this);
             // делаем элементы видимыми сразу
             item.addClass('visible');
@@ -274,16 +292,16 @@ $(document).ready(function() {
     }
 
     // фильтрация портфолио
-    $('.filter-btn').click(function() {
+    $('.portfolio__filter').click(function() {
         var filter = $(this).data('filter');
         
-        $('.filter-btn').removeClass('active');
-        $(this).addClass('active');
+        $('.portfolio__filter').removeClass('portfolio__filter--active');
+        $(this).addClass('portfolio__filter--active');
         
         if (filter === 'all') {
-            $('.portfolio-item').fadeIn(300);
+            $('.portfolio__item').fadeIn(300);
         } else {
-            $('.portfolio-item').each(function() {
+            $('.portfolio__item').each(function() {
                 if ($(this).data('category') === filter) {
                     $(this).fadeIn(300);
                 } else {

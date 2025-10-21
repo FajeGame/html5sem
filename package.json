@@ -1,7 +1,13 @@
 {
+  "name": "lab3-portfolio-scss",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "sass:dev": "sass --watch <source dir>:<out dir>",
-    "sass:prod": "sass --no-source-map --style compressed <source dir>:<out dir>"
+    "sass:dev": "sass --watch scss:dist/css",
+    "sass:prod": "sass --no-source-map --style compressed scss:dist/css"
+  },
+  "devDependencies": {
+    "sass": "^1.78.0"
   }
 }
 

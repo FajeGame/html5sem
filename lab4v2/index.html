@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'light-bg': '#e3f2fd',
+                        'light-surface': '#bbdefb',
+                        'light-text': '#0d47a1',
+                        'light-text-secondary': '#1565c0',
+                        'light-border': '#90caf9',
+                        'dark-bg': '#0d1b2a',
+                        'dark-surface': '#1b263b',
+                        'dark-text': '#e0e7ff',
+                        'dark-text-secondary': '#c7d2fe',
+                        'dark-border': '#415a77',
+                        'primary': '#2196f3',
+                        'primary-hover': '#1976d2',
+                        'secondary': '#64b5f6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="light-theme bg-light-bg text-light-text transition-all duration-300 min-h-screen">
+    <div class="max-w-2xl mx-auto p-8 md:p-6">
+        <header class="flex items-center justify-between mb-8">
+            <h1 class="text-3xl md:text-2xl font-bold">Мой список задач</h1>
+            <button class="theme-toggle w-11 h-11 rounded-full border-none cursor-pointer transition-all duration-300 bg-light-surface hover:bg-light-border dark:bg-dark-surface dark:hover:bg-dark-border" aria-label="Переключить тему">
+                <span class="theme-toggle__icon text-xl">🌙</span>
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 mb-8">
+            <div class="search">
+                <input 
+                    type="text" 
+                    class="w-full px-4 py-3 rounded-lg border-2 text-base transition-all duration-300 bg-light-surface border-light-border text-light-text focus:outline-none focus:border-primary dark:bg-dark-surface dark:border-dark-border dark:text-dark-text" 
+                    placeholder="Поиск задач..."
+                    id="searchInput"
+                >
+            </div>
+            <button class="btn btn--primary bg-primary text-white px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 hover:bg-primary-hover" id="addTaskBtn">
+                + Добавить задачу
+            </button>
+        </div>
+
+        <div class="todos" id="todosContainer">
+            <section class="mb-8">
+                <h2 class="text-lg font-semibold mb-6 text-light-text-secondary dark:text-dark-text-secondary">Активные задачи</h2>
+                <ul class="list-none" id="activeTodos"></ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-lg font-semibold mb-6 text-light-text-secondary dark:text-dark-text-secondary">Выполненные задачи</h2>
+                <ul class="list-none" id="completedTodos"></ul>
+            </section>
+        </div>
+
+        <div class="text-center py-8 text-light-text-secondary dark:text-dark-text-secondary hidden" id="emptyMessage">
+            <p>У вас пока нет задач. Добавьте первую задачу!</p>
+        </div>
+    </div>
+
+    <!-- Modal для добавления/редактирования задачи -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300" id="taskModal">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative w-11/12 max-w-lg rounded-xl shadow-2xl transform scale-90 transition-all duration-300 bg-light-bg dark:bg-dark-bg">
+            <div class="flex items-center justify-between p-8 border-b border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg">
+                <h2 class="text-xl font-semibold" id="modalTitle">Добавить задачу</h2>
+                <button class="w-8 h-8 border-none bg-transparent cursor-pointer rounded text-xl transition-all duration-300 hover:bg-light-surface dark:hover:bg-dark-bg" id="closeModalBtn" aria-label="Закрыть">
+                    ✕
+                </button>
+            </div>
+            <form class="p-8 bg-light-bg dark:bg-dark-bg" id="taskForm">
+                <div class="mb-6">
+                    <label for="taskName" class="block mb-2 font-medium">Название задачи</label>
+                    <input 
+                        type="text" 
+                        id="taskName" 
+                        class="w-full px-4 py-3 rounded-lg border-2 text-base transition-all duration-300 bg-light-bg dark:bg-dark-bg border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:outline-none focus:border-primary" 
+                        placeholder="Введите название задачи..."
+                        required
+                    >
+                </div>
+                <div class="flex items-center justify-between gap-6 mt-8">
+                    <button type="button" class="btn btn--secondary bg-secondary text-white px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 hover:opacity-80" id="cancelBtn">
+                        Отмена
+                    </button>
+                    <button type="submit" class="btn btn--primary bg-primary text-white px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 hover:bg-primary-hover">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

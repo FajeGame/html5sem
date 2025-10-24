@@ -15,9 +15,9 @@
 
 ## Технологии
 
-- HTML5, TailwindCSS, Vanilla JavaScript
+- HTML5, TailwindCSS, Vanilla JavaScript, SCSS
 - Адаптивный дизайн для всех устройств
-- Dark mode через классы TailwindCSS
+- Dark mode через классы TailwindCSS или SCSS
 
 ## Запуск
 

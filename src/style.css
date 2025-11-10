@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+button {
+  cursor: pointer;
+}
+
+.dark {
+  background: #0d1b2a;
+  color: #e0e7ff;
+}

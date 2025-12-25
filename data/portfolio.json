@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Этот сайт-портфолио",
+      "description": "Современный сайт-визитка с динамическим поведением на jQuery. Включает карусель, модальные окна и анимации.",
+      "category": "web",
+      "tags": ["HTML", "CSS", "JavaScript", "jQuery"],
+      "image": "fas fa-globe",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "Курсовая работа по БД",
+      "description": "Разработка системы управления базой данных. Получил 39 из 40 баллов за качество реализации и документацию.",
+      "category": "db",
+      "tags": ["MongoDB", "Oracle", "SQL", "ER-диаграммы"],
+      "image": "fas fa-database",
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "title": "Игра на Unity",
+      "description": "Разработал 3D раннер на Unity.",
+      "category": "game",
+      "tags": ["Unity", "C#", "3D", "Game Design"],
+      "image": "fas fa-gamepad",
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "title": "Практика в вузу",
+      "description": "Проходил практику в вузе",
+      "category": "work",
+      "tags": ["Практика", "Командная работа", "Программирование", "Git"],
+      "image": "fas fa-briefcase",
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "title": "Работа проводником",
+      "description": "2 лета работал проводником поездов Москва-Санкт-Петербург. Развил навыки общения с людьми и работы в команде.",
+      "category": "work",
+      "tags": ["Работа с людьми", "Ответственность", "Командная работа", "Сервис"],
+      "image": "fas fa-train",
+      "link": "#"
+    },
+    {
+      "id": 6,
+      "title": "Мобильное приложение",
+      "description": "Разработал простое мобильное приложение в ходе учебной деятельности",
+      "category": "app",
+      "tags": ["Kotlin", "Android", "Emulator", "Mobile"],
+      "image": "fas fa-mobile-alt",
+      "link": "#"
+    }
+  ]
+}

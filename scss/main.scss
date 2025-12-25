@@ -1,0 +1,18 @@
+// Импорт утилит
+@import 'utils/variables';
+@import 'utils/mixins';
+
+// Импорт базовых стилей
+@import 'base/reset';
+@import 'base/typography';
+
+// Импорт компонентов
+@import 'components/buttons';
+
+// Импорт макета
+@import 'layout/header';
+@import 'layout/sections';
+
+// Импорт тем
+@import 'themes/light';
+@import 'themes/dark';

@@ -1,0 +1,72 @@
+// Светлая тема (по умолчанию)
+:root {
+  // Основные цвета
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-accent: #{$color-accent};
+  --color-accent-dark: #{$color-accent-dark};
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-danger: #{$color-danger};
+  
+  // Цвета текста
+  --color-text: #{$color-text};
+  --color-text-light: #{$color-text-light};
+  --color-text-muted: #{$color-text-muted};
+  
+  // Цвета фона
+  --color-bg: #{$color-bg};
+  --color-bg-light: #{$color-bg-light};
+  --color-bg-dark: #{$color-bg-dark};
+  
+  // Цвета границ
+  --color-border: #{$color-border};
+  --color-border-dark: #{$color-border-dark};
+  
+  // Тени
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+}
+
+// Применение светлой темы
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+// Специфичные стили для светлой темы
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  
+  &--scrolled {
+    background: rgba(255, 255, 255, 0.98);
+  }
+}
+
+.hero {
+  background: $gradient-hero;
+}
+
+.about {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.skills {
+  background: var(--color-bg);
+}
+
+.portfolio {
+  background: var(--color-bg-light);
+  
+  &__item {
+    background: var(--color-bg);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.contact {
+  background: var(--color-bg-dark);
+  color: white;
+}

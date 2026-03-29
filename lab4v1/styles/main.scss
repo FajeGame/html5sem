@@ -1,0 +1,345 @@
+// Цвета
+$color-light-bg: #e3f2fd;
+$color-light-surface: #bbdefb;
+$color-light-text: #0d47a1;
+$color-light-text-secondary: #1565c0;
+$color-light-border: #90caf9;
+
+$color-dark-bg: #0d1b2a;
+$color-dark-surface: #1b263b;
+$color-dark-text: #e0e7ff;
+$color-dark-text-secondary: #c7d2fe;
+$color-dark-border: #415a77;
+
+$color-primary: #2196f3;
+$color-primary-hover: #1976d2;
+$color-secondary: #64b5f6;
+$radius-md: 8px;
+$transition: 0.3s ease;
+$breakpoint-mobile: 768px;
+
+// Миксин для тем
+@mixin theme($light-prop, $light-value, $dark-prop, $dark-value) {
+  .light-theme & { #{$light-prop}: $light-value; }
+  .dark-theme & { #{$dark-prop}: $dark-value; }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) { @content; }
+}
+
+// Базовые стили
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  transition: all $transition;
+  min-height: 100vh;
+}
+
+// Темы
+.light-theme {
+  background-color: $color-light-bg;
+  color: $color-light-text;
+}
+
+.dark-theme {
+  background-color: $color-dark-bg;
+  color: $color-dark-text;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  @include mobile { padding: 1.5rem; }
+}
+
+.hidden { display: none !important; }
+
+// Заголовок
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    @include mobile { font-size: 1.4rem; }
+  }
+}
+
+.theme-toggle {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: all $transition;
+  @include theme(background-color, $color-light-surface, background-color, $color-dark-surface);
+  
+  &:hover {
+    @include theme(background-color, $color-light-border, background-color, $color-dark-border);
+  }
+  
+  &__icon { font-size: 1.3rem; }
+}
+
+// Управление
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.search__input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: $radius-md;
+  border: 2px solid;
+  font-size: 1rem;
+  transition: all $transition;
+  @include theme(background-color, $color-light-surface, background-color, $color-dark-surface);
+  @include theme(border-color, $color-light-border, border-color, $color-dark-border);
+  @include theme(color, $color-light-text, color, $color-dark-text);
+  
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+// Кнопки
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border-radius: $radius-md;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all $transition;
+  
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+    &:hover { background-color: $color-primary-hover; }
+  }
+  
+  &--secondary {
+    background-color: $color-secondary;
+    color: white;
+    &:hover { opacity: 0.8; }
+  }
+  
+  &--icon {
+    padding: 0.5rem;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    @include theme(border-color, $color-light-border, border-color, $color-dark-border);
+    @include theme(background-color, $color-light-bg, background-color, $color-dark-bg);
+    
+    &:hover {
+      @include theme(background-color, $color-light-surface, background-color, $color-dark-surface);
+    }
+  }
+}
+
+// Задачи
+.todos-section {
+  margin-bottom: 2rem;
+  
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    @include theme(color, $color-light-text-secondary, color, $color-dark-text-secondary);
+  }
+}
+
+.todos-list {
+  list-style: none;
+  &:empty { display: none; }
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: $radius-md;
+  transition: all $transition;
+  @include theme(background-color, $color-light-surface, background-color, $color-dark-surface);
+  @include theme(border, 1px solid $color-light-border, border, 1px solid $color-dark-border);
+  
+  &--completed .todo-item__text {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 1.5rem;
+  }
+  
+  &__text {
+    flex: 1;
+    font-size: 1rem;
+    word-break: break-word;
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.message {
+  text-align: center;
+  padding: 2rem;
+  @include theme(color, $color-light-text-secondary, color, $color-dark-text-secondary);
+}
+
+// Модальное окно
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all $transition;
+  
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    .modal__content { transform: scale(1); }
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  &__content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: all $transition;
+    @include theme(background-color, $color-light-bg, background-color, $color-dark-bg);
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-bottom: 1px solid;
+    @include theme(border-color, $color-light-border, border-color, $color-dark-border);
+    @include theme(background-color, $color-light-bg, background-color, $color-dark-bg);
+  }
+  
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  
+  &__close {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    transition: all $transition;
+    &:hover {
+      @include theme(background-color, $color-light-surface, background-color, $color-dark-bg);
+    }
+  }
+  
+  &__form { 
+    padding: 2rem;
+    @include theme(background-color, $color-light-bg, background-color, $color-dark-bg);
+  }
+}
+
+// Форма
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  &--actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: $radius-md;
+    border: 2px solid;
+    font-size: 1rem;
+    transition: all $transition;
+    @include theme(background-color, $color-light-bg, background-color, $color-dark-bg);
+    @include theme(border-color, $color-light-border, border-color, $color-dark-border);
+    @include theme(color, $color-light-text, color, $color-dark-text);
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+  }
+}
+
+// Темная тема - светлый текст
+body.dark-theme {
+  .modal__content {
+    color: $color-dark-text !important;
+  }
+  
+  .modal__title,
+  .todos-section__title,
+  .todo-item__text {
+    color: $color-dark-text !important;
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Мой список задач</h1>
+            <button class="theme-toggle" aria-label="Переключить тему">
+                <span class="theme-toggle__icon">🌙</span>
+            </button>
+        </header>
+
+        <div class="controls">
+            <div class="search">
+                <input 
+                    type="text" 
+                    class="search__input" 
+                    placeholder="Поиск задач..."
+                    id="searchInput"
+                >
+            </div>
+            <button class="btn btn--primary" id="addTaskBtn">
+                + Добавить задачу
+            </button>
+        </div>
+
+        <div class="todos" id="todosContainer">
+            <section class="todos-section todos-section--active">
+                <h2 class="todos-section__title">Активные задачи</h2>
+                <ul class="todos-list" id="activeTodos"></ul>
+            </section>
+
+            <section class="todos-section todos-section--completed">
+                <h2 class="todos-section__title">Выполненные задачи</h2>
+                <ul class="todos-list" id="completedTodos"></ul>
+            </section>
+        </div>
+
+        <div class="message" id="emptyMessage">
+            <p>У вас пока нет задач. Добавьте первую задачу!</p>
+        </div>
+    </div>
+
+    <!-- Modal для добавления/редактирования задачи -->
+    <div class="modal" id="taskModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2 class="modal__title" id="modalTitle">Добавить задачу</h2>
+                <button class="modal__close" id="closeModalBtn" aria-label="Закрыть">
+                    ✕
+                </button>
+            </div>
+            <form class="modal__form" id="taskForm">
+                <div class="form-group">
+                    <label for="taskName" class="form-group__label">Название задачи</label>
+                    <input 
+                        type="text" 
+                        id="taskName" 
+                        class="form-group__input" 
+                        placeholder="Введите название задачи..."
+                        required
+                    >
+                </div>
+                <div class="form-group form-group--actions">
+                    <button type="button" class="btn btn--secondary" id="cancelBtn">
+                        Отмена
+                    </button>
+                    <button type="submit" class="btn btn--primary">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
